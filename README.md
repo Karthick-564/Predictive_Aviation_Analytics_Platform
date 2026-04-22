@@ -49,7 +49,7 @@ The project is structured chronologically, representing an 8-week agile data sci
 ## 🛠️ Tech Stack & Methodologies
 * **Language:** Python 3.x
 * **Data Processing:** Pandas, NumPy
-* **Machine Learning:** Scikit-Learn (PCA, K-Means, StandardScaler, VarianceThreshold)
+* **Machine Learning:** Scikit-Learn (PCA,StandardScaler, VarianceThreshold)
 * **Data Visualization:** Matplotlib, Seaborn, Plotly
 * **Web Deployment:** Streamlit (Cached for high-performance memory management on large datasets)
 
