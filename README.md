@@ -1,60 +1,123 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/PlqmsmDX)
+# ✈️ Predictive Aviation Analytics Platform
 
+> **Decoding 1.7 million flight records into visual narratives that reveal the true structural drivers of US flight delays.**
 
-
-# ✈️ Predictive Aviation Analytics Pipeline & Interactive Dashboard
-
-![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
-![Scikit-Learn](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-orange.svg)
-![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-red.svg)
-![Data Size](https://img.shields.io/badge/Data-1.7M%20Rows-success.svg)
-
-##  Executive Summary
-This repository contains an end-to-end data science and machine learning pipeline designed to analyze, process, and cluster **1.7 million+ US flight records**. The primary objective of this project is to identify structural bottlenecks in the national aviation network, isolate severe weather and carrier-induced anomalies, and present these findings through an enterprise-grade, interactive web dashboard.
-
-By utilizing advanced feature engineering, Principal Component Analysis (PCA),, this project successfully separates standard day-to-day flight operations from severe, cascading network meltdowns.
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
-##  Repository Structure & Project Timeline
+## 🧭 Project Overview
 
-The project is structured chronologically, representing an 8-week agile data science sprint. **Inside every weekly folder, you will find a detailed documentation report alongside the `.ipynb` Jupyter Notebook containing the executable code.**
+The US aviation network loses millions of operational minutes annually to flight delays. This project builds a complete end-to-end data science pipeline — from raw data ingestion to an interactive analytics dashboard — to answer a deceptively hard question:
 
-*  **`week_1` & `week_2` : Data Acquisition & Exploratory Data Analysis (EDA)**
-  * Initial ingestion of 1.7M rows of Bureau of Transportation Statistics data.
-  * Identification of heavy right-skew distributions in delay columns and seasonal traffic spikes.
+> *Are delays caused by the airline, the weather, the airport, or a cascading domino effect?*
 
-*  **`Week_3` & `Week_4` : Data Cleaning & Outlier Management**
-  * Handled severe structural missingness (NaN values) using median imputation.
-  * Capped extreme operational breakdowns at 24 hours (1440 mins) to preserve minority-class anomaly integrity without destroying model weights.
-
-*  **`Week_6` : Advanced Feature Engineering**
-  * Applied Cube Root mathematical transformations to normalize right-skewed delay data.
-  * Executed high-cardinality Label Encoding for hundreds of distinct US airport codes and carrier identifiers.
-
-*  **`Week_7` : Dimensionality Reduction (PCA)**
-  * Eliminated target leakage by strictly isolating delay variables from the feature matrix.
-  * Applied `StandardScaler` to expose massive, sparse operational anomalies.
-  * Compressed 15+ complex features down to **11 Principal Components**, successfully retaining **>85% of the mathematical variance**.
-
-*  **`Week_8` :  Dashboard Deployment**
-  *  Built a low-latency, highly interactive **Streamlit** dashboard for executive storytelling.
-  * Mapped PCA outputs and temporal trends to dynamic filters, allowing users to visually isolate network failures by carrier and season without performance degradation.
-
-* **`Final_presentation`**
-  * Contains the final slide decks and visualizations summarizing the business impact and statistical findings.
+Working with **1.7 million flight records** from the US Bureau of Transportation Statistics (BTS), this project applies statistical rigor and visual storytelling to decompose delay root causes across carriers, airports, seasons, and routes.
 
 ---
 
-## 🛠️ Tech Stack & Methodologies
-* **Language:** Python 3.x
-* **Data Processing:** Pandas, NumPy
-* **Machine Learning:** Scikit-Learn (PCA,StandardScaler, VarianceThreshold)
-* **Data Visualization:** Matplotlib, Seaborn, Plotly
-* **Web Deployment:** Streamlit (Cached for high-performance memory management on large datasets)
+## 📊 Key Findings
+
+| Insight | Finding |
+|---|---|
+| **Top delay driver** | Carrier-caused delays account for ~42% of total delay minutes |
+| **Worst season** | Summer (June–August) shows 2.3× higher delay probability than winter |
+| **Cascading effect** | ~38% of arrival delays are directly inherited from departure delays |
+| **PCA variance** | 6 principal components explain 87% of variance in delay features |
+| **High-risk airports** | ORD, ATL, EWR consistently appear in top-5 delay generators |
 
 ---
 
+## 🗂️ Repository Structure
 
-The capstone of this project is the interactive Streamlit dashboard located in `Week_8`. The app uses `@st.cache_data` and the use of parquet  to instantly load the 1.7 million rows into RAM, ensuring a minimum lag analytical experience.
+```
+predictive-aviation-analytics-platform/
+│
+├── 01_data_collection/          # Dataset sourcing, schema exploration, initial load
+├── 02_eda/                      # Exploratory data analysis & visual storytelling
+├── 03_data_cleaning/            # Missing value imputation, outlier detection
+├── 04_feature_engineering/      # Feature creation, encoding, normalization
+├── 05_dimensionality_reduction/ # PCA, feature selection, variance analysis
+└── 06_dashboard/                # Interactive Streamlit dashboard (run locally)
+```
 
+---
+
+## 🚀 Tech Stack
+
+| Layer | Tools |
+|---|---|
+| **Data Processing** | Pandas, NumPy |
+| **Visualization** | Matplotlib, Seaborn, Plotly |
+| **Machine Learning** | Scikit-learn (PCA, StandardScaler) |
+| **Dashboard** | Streamlit |
+| **Data Source** | [BTS Airline On-Time Performance Data](https://www.transtats.bts.gov/) |
+
+---
+
+## 📁 Dataset
+
+The dataset is sourced from the **US Department of Transportation – Bureau of Transportation Statistics (BTS)**:
+- **Records:** ~1.7 million flight operations (Jan, Jul, Oct)
+- **Features:** 30+ columns including carrier, origin, destination, delay causes, cancellation codes
+- **Source:** https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp
+
+> ⚠️ Raw and processed CSV files are not tracked in this repo due to size (~380 MB each). Download from the BTS link above or see the data loading instructions in `01_data_collection/`.
+
+---
+
+## ⚡ Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/Karthick-564/predictive-aviation-analytics-platform.git
+cd predictive-aviation-analytics-platform
+
+# Install dependencies
+pip install -r 06_dashboard/requirements.txt
+
+# Run the dashboard
+streamlit run 06_dashboard/app.py
+```
+
+---
+
+## 📈 Pipeline at a Glance
+
+```
+Raw BTS Data (1.7M rows)
+        │
+        ▼
+01 Data Collection ──► Schema validation, initial profiling
+        │
+        ▼
+02 EDA ──────────────► Univariate, Bivariate, Temporal, Correlation analysis
+        │
+        ▼
+03 Data Cleaning ────► Missing value imputation, outlier removal (Z-score/IQR)
+        │
+        ▼
+04 Feature Engineering ► Delay categories, SEASON column, carrier risk scores
+        │
+        ▼
+05 Dimensionality Reduction ► PCA (6 components, 87% variance explained)
+        │
+        ▼
+06 Dashboard ────────► Interactive Streamlit app with filters & drill-downs
+```
+
+---
+
+## 👤 Author
+
+**Karthick N**
+- GitHub: [@Karthick-564](https://github.com/Karthick-564)
+- Email: nkarthick564@gmail.com
+
+---
+
+*Built as part of the DSV Hack-a-BIT Visual Storytelling Challenge*
