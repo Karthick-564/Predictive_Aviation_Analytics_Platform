@@ -112,12 +112,3 @@ Raw BTS Data (1.7M rows)
 
 ---
 
-## 👤 Author
-
-**Karthick N**
-- GitHub: [@Karthick-564](https://github.com/Karthick-564)
-- Email: nkarthick564@gmail.com
-
----
-
-*Built as part of the DSV Hack-a-BIT Visual Storytelling Challenge*
