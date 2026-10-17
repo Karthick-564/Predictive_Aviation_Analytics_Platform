@@ -1,6 +1,7 @@
 # Data files — too large for git (use BTS source to download)
 *.csv
 *.zip
+*.parquet
 
 # Python
 __pycache__/
